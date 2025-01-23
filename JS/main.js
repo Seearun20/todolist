@@ -184,9 +184,8 @@ function changeTheme(color) {
     document.querySelector('input').className = `${color}-input`;
     // Change todo color without changing their status (completed or not):
     document.querySelectorAll('.todo').forEach(todo => {
-        Array.from(todo.classList).some(item => item === 'completed') ? 
-            todo.className = `todo ${color}-todo completed`
-            : todo.className = `todo ${color}-todo`;
+        let isCompleted = Array.from(todo.classList).some(item => item === 'completed');
+        todo.className = `todo ${color}-todo ${isCompleted ? 'completed' : ''}`;
     });
     // Change buttons color according to their type (todo, check or delete):
     document.querySelectorAll('button').forEach(button => {
